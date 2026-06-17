@@ -68,30 +68,30 @@ cc_map: ['cc_map']
 DEPT_INFO = {
     'Respiratory Medicine': {
         'icon': '🫁', 'color': '#0284c7', 'border': '#7dd3fc',
-        'desc': "Specialises in conditions affecting the lungs and airways.",
+        'desc': "Specialises in conditions affecting the lungs and airways."
         'next': ['Visit Level 2, Wing B', 'Estimated wait: 15-25 min', 'Please wear a mask']
     },
     'Cardiology': {
         'icon': '💓', 'color': '#dc2626', 'bg': '#fee2e2', 'border': '#fca5a5',
-        'desc': "Specialises in heart and cardiovascular conditions.",
+        'desc': "Specialises in heart and cardiovascular conditions."
         'next': ['Visit Level 3, Wing A', 'Estimated wait: 20-30 min', 'Bring any previous ECG reports']
     },
     'Gastroenterology': {
         'icon': '🤢', 'color': '#d97706', 'bg': '#fef3c7', 'border': '#fcd34d',
-        'desc': "Specialises in digestive system and abdominial conditions.",
+        'desc': "Specialises in digestive system and abdominial conditions."
         'next': ['Visit Level 1, Wing C', 'Estimated wait: 10-20 min', 'Avoid eating before consultation']
     },
     'Neurology': {
         'icon': '🧠', 'color': '#7c3aed', 'bg': '#ede9fe', 'border': '#c4b5fd',
-        'desc': "Specialises in brain, spine, and nervous system conditions.",
+        'desc': "Specialises in brain, spine, and nervous system conditions."
         'next': ['Visit Level 4, Wing A', 'Estimated wait: 25-35 min', 'Bring list of current medications']
     },'General Medicine': {
         'icon': '🩺', 'color': '#059669', 'bg': '#d1fae5', 'border': '#6ee7b7',
-        'desc': "Handles general health concerns and non-specilaist conditions.",
+        'desc': "Handles general health concerns and non-specilaist conditions."
         'next': ['Visit Level 1, Wing A', 'Estimated wait: 10-15 min', 'Registration desk is open 24/7']
     },'Dermatology': {
         'icon': '🔬', 'color': '#b45309', 'bg': '#fef9c3', 'border': '#fde68a',
-        'desc': "Specialises in skin, hair, and nail conditions.",
+        'desc': "Specialises in skin, hair, and nail conditions."
         'next': ['Visit Level 2, Wing D', 'Estimated wait: 15-20 min', 'Bring photos of affected area if possible']
     },
 
@@ -113,3 +113,59 @@ st.markdown("""
    </div>
 </div>
 """, unsafe_allow_html = True)
+
+with st.form('triangle_form'):
+
+    st.markdown("""
+    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:14px;
+            padding:20px 24px;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+            <span style="background:#0284c7;color:white;border-radius:8px;
+                        padding:4px 10px;font-size:12px;font-weight:600;">1</span>
+            <span style="font-size:16px;font-weight:600;color:#0c4a6e;">What are your main symptoms?</span>
+            <span style="font-size:13px;color:#6b7280;font-style:italic;">select all that apply</span>
+        </div>
+    </div>    
+    """, unsafe_allow_html = True)
+
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+    fever            = st.checkbox("🌡️  Fever")
+    cough            = st.checkbox("🤧  Cough")
+    with c2:
+    headache         = st.checkbox("🤕  Headache")
+    chest_pain       = st.checkbox("💔  Chest Pain")
+    with c3:
+    stomach_pain     = st.checkbox("🤢  Stomach Pain")
+    shortness_breath = st.checkbox("😮‍💨  Shortness of Breath")
+    with c4:
+    nausea_vomiting  = st.checkbox("🤮  Nausea / Vomiting")
+    dizziness        = st.checkbox("😵  Dizziness")
+
+
+    c5, _, _, _ = st.columns(4)
+    with c5:
+    skin_rash = st.checkbox("🔴  Skin Rash")
+
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""
+<div style="background:#fdf4ff;border:1px solid #e9d5ff;border-radius:14px;
+           padding:20px 24px;margin-bottom:20px;">
+   <div style="display:flex;align-items:center;gap:10px;">
+       <span style="background:#7c3aed;color:white;border-radius:8px;
+                    padding:4px 10px;font-size:12px;font-weight:600;">2</span>
+       <span style="font-size:16px;font-weight:600;color:#3b0764;">How long have you had these symptoms?</span>
+   </div>
+</div>
+""", unsafe_allow_html = True)
+
+col_cc, col_dur = st.columns(2)
+with col_cc:
+   chief_complaint = st.selectbox("Chief complaint", options=list(cc_map.keys()))
+with col_dur:
+   duration = st.selectbox("Duration", options=list(dur_map.keys()), index=1)
+
+
+st.markdown("<br>", unsafe_allow_html=True)
