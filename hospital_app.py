@@ -163,9 +163,9 @@ with st.form('triangle_form'):
 
     col_cc, col_dur = st.columns(2)
     with col_cc:
-    chief_complaint = st.selectbox("Chief complaint", options=list(cc_map.keys()))
+        chief_complaint = st.selectbox("Chief complaint", options=list(cc_map.keys()))
     with col_dur:
-    duration = st.selectbox("Duration", options=list(dur_map.keys()), index=1)
+        duration = st.selectbox("Duration", options=list(dur_map.keys()), index=1)
 
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -185,9 +185,9 @@ with st.form('triangle_form'):
 
     col_temp, col_hr = st.columns(2)
     with col_temp:
-    temperature_level = st.selectbox("Temperature", options=list(temp_map.keys()), index=1)
+        temperature_level = st.selectbox("Temperature", options=list(temp_map.keys()), index=1)
     with col_hr:
-    heart_rate_level  = st.selectbox("Heart rate", options=list(hr_map.keys()), index=1)
+        heart_rate_level  = st.selectbox("Heart rate", options=list(hr_map.keys()), index=1)
 
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -225,9 +225,9 @@ with st.form('triangle_form'):
 
     col_age, col_gen = st.columns(2)
     with col_age:
-    age    = st.number_input("Age", min_value=1, max_value=120, value=35)
+        age    = st.number_input("Age", min_value=1, max_value=120, value=35)
     with col_gen:
-    gender = st.selectbox("Gender", options=['Female', 'Male'])
+        gender = st.selectbox("Gender", options=['Female', 'Male'])
 
 
     submitted = st.form_submit_button("Get AI Recommendation →")
